@@ -1,7 +1,11 @@
+.header{
+    margin-top: 20px;
+}
 .logo{
     height: 50px;
 }
 .header nav{
+    margin-top: 20px;
     background-color: black;
     line-height: 45px;
 }
