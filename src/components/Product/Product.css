@@ -1,0 +1,15 @@
+.product{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 200px;
+    border-bottom: 1px solid lightgray;
+    margin-right: 5px;
+}
+.product-name{
+    font-weight: 400;
+    color: blue;
+}
+.product-details{
+    text-align: left;
+}
