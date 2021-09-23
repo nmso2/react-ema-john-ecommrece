@@ -2,9 +2,10 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-left: 200px;
+    margin-left: auto;
     border-bottom: 1px solid lightgray;
     margin-right: 5px;
+    padding-bottom: 5px;
 }
 .product-name{
     font-weight: 400;
@@ -12,4 +13,10 @@
 }
 .product-details{
     text-align: left;
+}
+.common-btn{
+    background-color: goldenrod;
+    border: lightgray;
+    padding: 10px 40px;
+    cursor: pointer;
 }

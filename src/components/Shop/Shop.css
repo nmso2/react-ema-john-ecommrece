@@ -1,6 +1,7 @@
 .shop-container{
     display: grid;
     grid-template-columns: 3fr 1fr;
+    margin-left: 130px;
 }
 .product-container{
     border-right: 1px solid gray;
@@ -9,9 +10,11 @@
 .cart-container{
     margin-left: 5px;
 }
-.cart-container div{
-    text-align: left;
-}
-.cart-container div p{
-    font-size: small;
+.cart-design{
+    margin-top: 10px;
+    position: fixed;
+    width: 22%;
+    padding: 10px;
+    -webkit-box-shadow: 0px 0px 15px -1px #a0bed1; 
+    box-shadow: 0px 0px 15px -1px #8da7b8;
 }
