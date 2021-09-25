@@ -4,3 +4,9 @@
 .cart p{
     font-size: small;
 }
+.cart-head{
+    text-align: center;
+}
+.cart-head p{
+    font-size: large;
+}
