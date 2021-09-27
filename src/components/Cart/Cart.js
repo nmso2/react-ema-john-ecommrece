@@ -1,11 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useEffect } from 'react/cjs/react.development';
+import { getStoredCart } from '../../utilities/fakedb';
 import './Cart.css'
 
 const Cart = (props) => {
     let total = 0;
     let totalQuantity = 0;
 
-    for (const product of props.cart) {
+
+    const [orderedCart, setOrderedCart] = useState([]);
+
+    useEffect(() => {
+        if (props.cart.length) {
+            const savedCart = getStoredCart();
+            const storedCart = [];
+            for (const key in savedCart) {
+                const addedProduct = props.cart.find(product => product.key === key);
+                if (addedProduct) {
+                    const quantity = savedCart[key];
+                    addedProduct.quantity = quantity;
+                    storedCart.push(addedProduct)
+                }
+            }
+            setOrderedCart(storedCart);
+        }
+    }, [props.cart])
+
+    for (const product of orderedCart) {
         product.quantity = !product.quantity ? 1 : product.quantity;
         totalQuantity = totalQuantity + product.quantity;
     }
