@@ -8,7 +8,6 @@ const Cart = (props) => {
     for (const product of props.cart) {
         product.quantity = !product.quantity ? 1 : product.quantity;
         totalQuantity = totalQuantity + product.quantity;
-        console.log(totalQuantity);
     }
 
     props.cart.map(item => total = total + item.price)
