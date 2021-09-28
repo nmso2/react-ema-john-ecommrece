@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react/cjs/react.development';
+import React, { useEffect, useState } from 'react';
 import { getStoredCart } from '../../utilities/fakedb';
 import './Cart.css'
 
