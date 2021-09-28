@@ -1,11 +1,13 @@
 .header{
-    margin-top: 20px;
+    padding-top: 10px;
+    position: fixed;
+    background-color: white;
+    width: 100%;
 }
 .logo{
     height: 50px;
 }
 .header nav{
-    margin-top: 20px;
     background-color: black;
     line-height: 45px;
 }

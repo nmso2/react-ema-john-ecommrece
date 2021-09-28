@@ -1,3 +1,14 @@
+.search-container{
+    line-height: 40px;
+    background-color: rgba(0, 0, 0, 0.767);
+    position: fixed;
+    width: 100%;
+    margin-top: 110px;
+}
+.search-container input{
+    width: 75%;
+    line-height: 20px;
+}
 .shop-container{
     display: grid;
     grid-template-columns: 3fr 1fr;
@@ -6,9 +17,11 @@
 .product-container{
     border-right: 1px solid gray;
     margin-right: 5px;
+    margin-top: 165px;
 }
 .cart-container{
     margin-left: 5px;
+    margin-top: 155px;
 }
 .cart-design{
     margin-top: 10px;

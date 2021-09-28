@@ -31,7 +31,7 @@ const Cart = (props) => {
         totalQuantity = totalQuantity + product.quantity;
     }
 
-    props.cart.map(item => total = total + item.price)
+    orderedCart.map(item => total = total + item.price*item.quantity);
     const tax = (total + 20) * 0.15;
     const deliveryCharge = 20;
     const totalBeforeTax = total + 20;
