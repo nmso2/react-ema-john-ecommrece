@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { addToDb, getStoredCart } from '../../utilities/fakedb';
+import { addToDb, clearTheCart, getStoredCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
@@ -39,6 +39,11 @@ const Shop = () => {
         addToDb(product.key);
     }
 
+    const confirmOrder = () => {
+        clearTheCart();
+        setCart([]);
+    }
+
     const handleSearch = event => {
         const searchTect = event.target.value;
         const matchedProducts = products.filter(product => product.name.toLowerCase().includes(searchTect.toLowerCase()));
@@ -62,7 +67,7 @@ const Shop = () => {
                 </div>
                 <div className="cart-container">
                     <div className="cart-design">
-                        <Cart cart={cart}></Cart>
+                        <Cart cart={cart} confirmOrder={confirmOrder}></Cart>
                     </div>
                 </div>
             </div>

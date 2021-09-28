@@ -23,7 +23,7 @@ const Product = (props) => {
                     emptySymbol="far fa-star"
                     fullSymbol="fas fa-star"
                 /> <br /><br />
-                <button className="common-btn" onClick={() => props.handleAddToCart(props.product)}>{cartIcon} add to cart</button>
+                <button className="common-btn" onClick={() => props.handleAddToCart(props.product)}>{cartIcon} Add To Cart</button>
             </div>
         </div>
     );

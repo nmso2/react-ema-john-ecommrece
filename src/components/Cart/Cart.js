@@ -6,7 +6,6 @@ const Cart = (props) => {
     let total = 0;
     let totalQuantity = 0;
 
-
     const [orderedCart, setOrderedCart] = useState([]);
 
     useEffect(() => {
@@ -30,22 +29,28 @@ const Cart = (props) => {
         totalQuantity = totalQuantity + product.quantity;
     }
 
-    orderedCart.map(item => total = total + item.price*item.quantity);
-    const tax = (total + 20) * 0.15;
+
+
+    orderedCart.map(item => total = total + item.price * item.quantity);
+    const tax = total * 0.15;
     const deliveryCharge = 20;
     const totalBeforeTax = total + 20;
     const grandTotal = total + deliveryCharge + tax;
+
     return (
         <div className="cart">
-            <div className="cart-head">
+            <div>
                 <h2>Order Summary</h2>
-                <p>Items Ordered: {totalQuantity}</p>
+                <p>Items Ordered: {props.cart.length === 0 ? 0 : totalQuantity}</p>
             </div>
-            <p>Items: $ {total.toFixed(2)}</p>
+            <p>Items: $ {props.cart.length === 0 ? 0 : total.toFixed(2)}</p>
             <p>Shipping &#38; Handling: $ {props.cart.length === 0 ? 0 : deliveryCharge}</p>
             <p>Total before tax: $ {props.cart.length === 0 ? 0 : totalBeforeTax.toFixed(2)}</p>
             <p>Estimated Tax:	$ {props.cart.length === 0 ? 0 : tax.toFixed(2)}</p>
             <h3>Order Total:	$ {props.cart.length === 0 ? 0 : grandTotal.toFixed(2)}</h3>
+            <div>
+                <button className="cart-btn" onClick={props.confirmOrder} >Confirm</button>
+            </div>
         </div>
     );
 };
