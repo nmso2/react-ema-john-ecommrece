@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { FormControl, InputGroup } from 'react-bootstrap';
 import { addToDb, clearTheCart, getStoredCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
-import './Shop.css'
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
-    const [displayProducts,setDisplayProducts]=useState([]);
+    const [displayProducts, setDisplayProducts] = useState([]);
 
     useEffect(() => {
         fetch('./products.json')
@@ -52,12 +52,18 @@ const Shop = () => {
     }
 
     return (
-        <div>
-            <div className="search-container">
-                <input onChange={handleSearch} type="text" placeholder="Search Product..." />
+        <div className="mt-lg-5 pt-lg-5">
+            <div className="container-fluid mt-lg-2 mt-5 bg-white position-fixed" style={{ zIndex: '1' }}>
+                <InputGroup onChange={handleSearch} type="text" className="mb-3 mt-3 mx-auto w-75">
+                    <FormControl
+                        placeholder="Search Product..."
+                        aria-label="Example text with button addon"
+                        aria-describedby="basic-addon1"
+                    />
+                </InputGroup>
             </div>
-            <div className="shop-container">
-                <div className="product-container">
+            <div className="container-fluid row mt-lg-2 pt-lg-5 mt-5 pt-3">
+                <div className=" col-lg-8 col-12 pt-5">
                     {
                         displayProducts.map(product => <Product
                             key={product.key}
@@ -65,8 +71,8 @@ const Shop = () => {
                             handleAddToCart={handleAddToCart}></Product>)
                     }
                 </div>
-                <div className="cart-container">
-                    <div className="cart-design">
+                <div className="col-lg-4 col-12 position-fixed end-0 pt-4 d-lg-block d-none">
+                    <div className="">
                         <Cart cart={cart} confirmOrder={confirmOrder}></Cart>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { Card, Button } from 'react-bootstrap';
 import { getStoredCart } from '../../utilities/fakedb';
-import './Cart.css'
 
 const Cart = (props) => {
     let total = 0;
@@ -38,19 +38,21 @@ const Cart = (props) => {
     const grandTotal = total + deliveryCharge + tax;
 
     return (
-        <div className="cart">
-            <div>
-                <h2>Order Summary</h2>
-                <p>Items Ordered: {props.cart.length === 0 ? 0 : totalQuantity}</p>
-            </div>
-            <p>Items: $ {props.cart.length === 0 ? 0 : total.toFixed(2)}</p>
-            <p>Shipping &#38; Handling: $ {props.cart.length === 0 ? 0 : deliveryCharge}</p>
-            <p>Total before tax: $ {props.cart.length === 0 ? 0 : totalBeforeTax.toFixed(2)}</p>
-            <p>Estimated Tax:	$ {props.cart.length === 0 ? 0 : tax.toFixed(2)}</p>
-            <h3>Order Total:	$ {props.cart.length === 0 ? 0 : grandTotal.toFixed(2)}</h3>
-            <div>
-                <button className="cart-btn" onClick={props.confirmOrder} >Confirm</button>
-            </div>
+        <div>
+            <Card border="primary" className="w-75 mx-auto">
+                <Card.Header><h2>Order Summary</h2></Card.Header>
+                <Card.Body>
+                    <Card.Title><p>Items Ordered: {props.cart.length === 0 ? 0 : totalQuantity}</p></Card.Title>
+                    <Card.Text>
+                        <p>Items: $ {props.cart.length === 0 ? 0 : total.toFixed(2)}</p>
+                        <p>Shipping &#38; Handling: $ {props.cart.length === 0 ? 0 : deliveryCharge}</p>
+                        <p>Total before tax: $ {props.cart.length === 0 ? 0 : totalBeforeTax.toFixed(2)}</p>
+                        <p>Estimated Tax:	$ {props.cart.length === 0 ? 0 : tax.toFixed(2)}</p>
+                        <h3>Order Total:	$ {props.cart.length === 0 ? 0 : grandTotal.toFixed(2)}</h3>
+                    </Card.Text>
+                    <Button onClick={props.confirmOrder} variant="warning">Confirm</Button>{' '}
+                </Card.Body>
+            </Card>
         </div>
     );
 };
