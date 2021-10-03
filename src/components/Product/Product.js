@@ -21,8 +21,8 @@ const Product = (props) => {
                     <Rating
                         initialRating={star}
                         readonly
-                        emptySymbol="far fa-star"
-                        fullSymbol="fas fa-star"
+                        emptySymbol="far fa-star text-warning"
+                        fullSymbol="fas fa-star text-warning"
                     /> <br /><br />
                     <Button onClick={() => props.handleAddToCart(props.product)} variant="warning">{cartIcon} Add To Cart</Button>{' '}
                 </div>
