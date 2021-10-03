@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { getStoredCart } from '../../utilities/fakedb';
 
 const Cart = (props) => {
@@ -40,17 +40,17 @@ const Cart = (props) => {
     return (
         <div>
             <Card border="primary" className="w-75 mx-auto">
-                <Card.Header><h2>Order Summary</h2></Card.Header>
+                <Card.Header><h2>Order <span className="d-lg-block d-none">Summary</span></h2></Card.Header>
                 <Card.Body>
                     <Card.Title><p>Items Ordered: {props.cart.length === 0 ? 0 : totalQuantity}</p></Card.Title>
                     <Card.Text>
-                        <p>Items: $ {props.cart.length === 0 ? 0 : total.toFixed(2)}</p>
-                        <p>Shipping &#38; Handling: $ {props.cart.length === 0 ? 0 : deliveryCharge}</p>
-                        <p>Total before tax: $ {props.cart.length === 0 ? 0 : totalBeforeTax.toFixed(2)}</p>
-                        <p>Estimated Tax:	$ {props.cart.length === 0 ? 0 : tax.toFixed(2)}</p>
-                        <h3>Order Total:	$ {props.cart.length === 0 ? 0 : grandTotal.toFixed(2)}</h3>
+                        <p className="my-0 my-lg-2">Items: $ {props.cart.length === 0 ? 0 : total.toFixed(2)}</p>
+                        <p className="my-0 my-lg-2">Shipping &#38; Handling: $ {props.cart.length === 0 ? 0 : deliveryCharge}</p>
+                        <p className="d-lg-block d-none my-0 my-lg-2">Total before tax: $ {props.cart.length === 0 ? 0 : totalBeforeTax.toFixed(2)}</p>
+                        <p className="my-0 my-lg-2">Estimated Tax:	$ {props.cart.length === 0 ? 0 : tax.toFixed(2)}</p>
+                        <h3 className="my-0 my-lg-2">Total:	$ {props.cart.length === 0 ? 0 : grandTotal.toFixed(2)}</h3>
                     </Card.Text>
-                    <Button onClick={props.confirmOrder} variant="warning">Confirm</Button>{' '}
+                    {props.children}
                 </Card.Body>
             </Card>
         </div>

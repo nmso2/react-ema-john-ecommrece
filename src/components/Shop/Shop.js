@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { FormControl, InputGroup } from 'react-bootstrap';
-import { addToDb, clearTheCart, getStoredCart } from '../../utilities/fakedb';
+import { Button, FormControl, InputGroup } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 const Shop = () => {
@@ -39,11 +40,6 @@ const Shop = () => {
         addToDb(product.key);
     }
 
-    const confirmOrder = () => {
-        clearTheCart();
-        setCart([]);
-    }
-
     const handleSearch = event => {
         const searchTect = event.target.value;
         const matchedProducts = products.filter(product => product.name.toLowerCase().includes(searchTect.toLowerCase()));
@@ -62,8 +58,8 @@ const Shop = () => {
                     />
                 </InputGroup>
             </div>
-            <div className="container-fluid row mt-lg-2 pt-lg-5 mt-5 pt-3">
-                <div className=" col-lg-8 col-12 pt-5">
+            <div className="container-fluid mt-lg-2 pt-lg-5 mt-5 pt-3 d-flex flex-column">
+                <div className=" col-lg-8 col-6 pt-5">
                     {
                         displayProducts.map(product => <Product
                             key={product.key}
@@ -71,9 +67,13 @@ const Shop = () => {
                             handleAddToCart={handleAddToCart}></Product>)
                     }
                 </div>
-                <div className="col-lg-4 col-12 position-fixed end-0 pt-4 d-lg-block d-none">
-                    <div className="">
-                        <Cart cart={cart} confirmOrder={confirmOrder}></Cart>
+                <div className="col-lg-4 col-6 position-fixed end-0 pt-lg-4 pt-5 mt-lg-0 mt-5">
+                    <div className=" mt-3">
+                        <Cart cart={cart}>
+                            <Link to="/order">
+                                <Button variant="warning">Review Your Order</Button>{' '}
+                            </Link>
+                        </Cart>
                     </div>
                 </div>
             </div>
