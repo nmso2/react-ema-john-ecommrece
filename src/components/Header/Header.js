@@ -23,7 +23,7 @@ const Header = () => {
                             </NavDropdown>
                         </Nav>
                         <Nav>
-                            <Link className="text-decoration-none nav-link" to="/about">About</Link >
+                            <Link className="text-decoration-none nav-link" to="/login">Login</Link >
                             <Link className="text-decoration-none nav-link" to="/news">News</Link >
                         </Nav>
                     </Navbar.Collapse>
