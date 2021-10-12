@@ -17,9 +17,9 @@ const Order = () => {
         deleteFromDb(key);
     }
     const placeOrder = () => {
-        histoty.push('/placeorder');
-        clearTheCart();
-        setCart([]);
+        histoty.push('/shipping');
+        // clearTheCart();
+        // setCart([]);
     }
 
     return (
@@ -33,7 +33,7 @@ const Order = () => {
             </div>
             <div className="col-lg-4 col-6 position-fixed end-0 pt-5 mt-3">
                 <Cart cart={cart}>
-                    <Button onClick={placeOrder} variant="warning">Place Your Order</Button>{' '}
+                    <Button onClick={placeOrder} variant="warning">Proceed to Shippin</Button>{' '}
                 </Cart>
             </div>
         </div>

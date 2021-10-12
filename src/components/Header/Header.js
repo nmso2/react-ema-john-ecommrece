@@ -1,11 +1,11 @@
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
-import useFirebase from '../../hooks/useFirebase';
+import useAuth from '../../hooks/useAuth';
 import logo from '../../images/logo.png'
 
 const Header = () => {
-    const { user, logOut } = useFirebase();
+    const { user, logOut } = useAuth();
     return (
         <div className="header fixed-top bg-white">
             <img width="180px" className="img-fluid" src={logo} alt="" />
@@ -25,11 +25,11 @@ const Header = () => {
                             </NavDropdown>
                         </Nav>
                         <Nav>
-                            {!user.displayName ? <Link className="text-decoration-none nav-link" to="/login">Login</Link > : <div className="d-flex">
-                            <Link className="text-decoration-none nav-link" to="/">Hello, {user.displayName}</Link >
-                                <Link className="text-decoration-none nav-link" onClick={logOut}>Logout</Link >
-                            </div>}
-                            <Link className="text-decoration-none nav-link" to="/news">News</Link >
+                            {user.displayName && <Link className="text-decoration-none nav-link" to="/">Hello, {user?.displayName}</Link >}
+                            {!user.displayName ? <Link className="text-decoration-none nav-link" to="/login">Login</Link > :
+                                <Link className="text-decoration-none nav-link" onClick={logOut} to="/">Logout</Link >
+                            }
+                            <Link className="text-decoration-none nav-link" to="/about">About</Link >
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

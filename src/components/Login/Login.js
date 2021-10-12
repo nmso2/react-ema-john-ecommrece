@@ -1,10 +1,23 @@
 import React from 'react';
-import { Button, Card, Col, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import useFirebase from '../../hooks/useFirebase';
+import { Button, Card, Form } from 'react-bootstrap';
+import { Link, useLocation, useHistory } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
-    const { user, lonInUsingGoogle, logOut } = useFirebase();
+    const { lonInUsingGoogle } = useAuth();
+    const location = useLocation();
+    const history = useHistory()
+    const redirect_uri = location.state?.from || '/';
+
+    const handleGoogleLogIn = () => {
+        lonInUsingGoogle()
+            .then((result) => {
+                history.push(redirect_uri);
+            }).catch((error) => {
+                
+            });
+    }
+
     return (
         <div style={{ width: '22rem' }} className="mt-5 pt-5 container-fluid">
             <Card className="mt-5 shadow-lg">
@@ -32,7 +45,7 @@ const Login = () => {
                         </p>
                         <p className="mt-0 mb-0 p-0">
                             or <br />
-                            Log In with <Button onClick={lonInUsingGoogle} variant="outline-primary"><i class="fab fa-google"></i></Button>
+                            Log In with <Button onClick={handleGoogleLogIn} variant="outline-primary"><i class="fab fa-google"></i></Button>
                         </p>
 
                     </Form>
