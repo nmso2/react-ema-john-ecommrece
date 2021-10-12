@@ -1,8 +1,10 @@
 import React from 'react';
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useFirebase from '../../hooks/useFirebase';
 
 const Login = () => {
+    const { user, lonInUsingGoogle, logOut } = useFirebase();
     return (
         <div style={{ width: '22rem' }} className="mt-5 pt-5 container-fluid">
             <Card className="mt-5 shadow-lg">
@@ -29,19 +31,13 @@ const Login = () => {
                             New to ema-jhon? Create <Link to='/createaccount'>Account.</Link>
                         </p>
                         <p className="mt-0 mb-0 p-0">
-                            or Log In with
-                            <br />
-                            <br />
-                            <Button variant="outline-primary"><i class="fab fa-google"></i></Button>
+                            or <br />
+                            Log In with <Button onClick={lonInUsingGoogle} variant="outline-primary"><i class="fab fa-google"></i></Button>
                         </p>
 
-
-
                     </Form>
-
                 </Card.Body>
             </Card>
-
         </div>
     );
 };

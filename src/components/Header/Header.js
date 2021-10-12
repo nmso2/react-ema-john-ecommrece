@@ -1,9 +1,11 @@
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
+import useFirebase from '../../hooks/useFirebase';
 import logo from '../../images/logo.png'
 
 const Header = () => {
+    const { user, logOut } = useFirebase();
     return (
         <div className="header fixed-top bg-white">
             <img width="180px" className="img-fluid" src={logo} alt="" />
@@ -23,7 +25,10 @@ const Header = () => {
                             </NavDropdown>
                         </Nav>
                         <Nav>
-                            <Link className="text-decoration-none nav-link" to="/login">Login</Link >
+                            {!user.displayName ? <Link className="text-decoration-none nav-link" to="/login">Login</Link > : <div className="d-flex">
+                            <Link className="text-decoration-none nav-link" to="/">Hello, {user.displayName}</Link >
+                                <Link className="text-decoration-none nav-link" onClick={logOut}>Logout</Link >
+                            </div>}
                             <Link className="text-decoration-none nav-link" to="/news">News</Link >
                         </Nav>
                     </Navbar.Collapse>
