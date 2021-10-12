@@ -11,14 +11,14 @@ const Header = () => {
             <img width="180px" className="img-fluid" src={logo} alt="" />
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
-                    <Nav.Link href="#shop"><Link className="navbar-brand" to="/">Ema-John</Link></Nav.Link>
+                    <Nav.Link className="p-0" href="#shop"><Link className="navbar-brand p-0" to="/">Ema-John</Link></Nav.Link>
 
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="#shop"><Link className="text-decoration-none nav-link" to="/shop">Shop</Link></Nav.Link>
-                            <Nav.Link href="#order"><Link className="text-decoration-none nav-link" to="/order">Order</Link></Nav.Link>
-                            <Nav.Link href="#inventory"><Link className="text-decoration-none nav-link" to="/inventory">Manage Inventory</Link></Nav.Link>
+                            <Nav.Link className="p-0" href="#shop"><Link className="text-decoration-none nav-link" to="/shop">Shop</Link></Nav.Link>
+                            <Nav.Link className="p-0" href="#order"><Link className="text-decoration-none nav-link" to="/order">Order</Link></Nav.Link>
+                            <Nav.Link className="p-0" href="#inventory"><Link className="text-decoration-none nav-link" to="/inventory">Manage Inventory</Link></Nav.Link>
 
                             <NavDropdown title="Categories" id="collasible-nav-dropdown">
                                 <NavDropdown.Item href="#categories/1"><Link className="dropdown-item" to="/categories/:catItem">Category 1</Link></NavDropdown.Item>
@@ -27,11 +27,11 @@ const Header = () => {
                             </NavDropdown>
                         </Nav>
                         <Nav>
-                            {user.displayName && <Nav.Link href="#user"><Link className="text-decoration-none nav-link" to="/">Hello, {user?.displayName}</Link ></Nav.Link> }
-                            {!user.displayName ? <Nav.Link href="#login"><Link className="text-decoration-none nav-link" to="/login">Login</Link ></Nav.Link> :
-                                <Nav.Link href="#logout"><Link className="text-decoration-none nav-link" onClick={logOut} to="/">Logout</Link ></Nav.Link>
+                            {user.displayName && <Nav.Link className="p-0" href="#user"><Link className="text-decoration-none nav-link" to="/">Hello, {user?.displayName}</Link ></Nav.Link> }
+                            {!user.displayName ? <Nav.Link className="p-0" href="#login"><Link className="text-decoration-none nav-link" to="/login">Login</Link ></Nav.Link> :
+                                <Nav.Link className="p-0" href="#logout"><Link className="text-decoration-none nav-link" onClick={logOut} to="/">Logout</Link ></Nav.Link>
                             }
-                            <Nav.Link href="#about"><Link className="text-decoration-none nav-link" to="/about">About</Link ></Nav.Link>
+                            <Nav.Link className="p-0" href="#about"><Link className="text-decoration-none nav-link" to="/about">About</Link ></Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

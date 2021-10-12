@@ -1,3 +1,4 @@
 #emajohn REACT project
 
-Live: https://emajohn-react.netlify.app/
+Live on Netlify: https://emajohn-react.netlify.app/
+Live on Firebase: https://react-ema-john-ecommerce.web.app/
