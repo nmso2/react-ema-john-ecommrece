@@ -4,13 +4,14 @@ import { Link, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
-    const { lonInUsingGoogle } = useAuth();
+    const { logInUsingGoogle } = useAuth();
+    
     const location = useLocation();
     const history = useHistory()
     const redirect_uri = location.state?.from || '/';
 
     const handleGoogleLogIn = () => {
-        lonInUsingGoogle()
+        logInUsingGoogle()
             .then((result) => {
                 history.push(redirect_uri);
             }).catch((error) => {

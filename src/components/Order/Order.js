@@ -10,7 +10,9 @@ import { useHistory } from 'react-router';
 const Order = () => {
     const [products, setProducts] = useProducts();
     const [cart, setCart] = useCart(products);
+
     const histoty = useHistory();
+    
     const handleRemove = key => {
         const newCart = cart.filter(product => product.key !== key);
         setCart(newCart);
