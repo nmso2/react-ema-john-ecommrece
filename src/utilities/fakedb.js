@@ -18,9 +18,9 @@ const addToDb = id => {
   updateDb(shopping_cart);
 }
 
-const getDb = () => localStorage.getItem('shopping_cart');
+const getDb = () => localStorage.getItem('ema-john-shopping_cart');
 const updateDb = cart => {
-  localStorage.setItem('shopping_cart', JSON.stringify(cart));
+  localStorage.setItem('ema-john-shopping_cart', JSON.stringify(cart));
 }
 
 const removeFromDb = id => {
@@ -41,7 +41,7 @@ const getStoredCart = () => {
 }
 
 const clearTheCart = () => {
-  localStorage.removeItem('shopping_cart');
+  localStorage.removeItem('ema-john-shopping_cart');
 }
 
 export { addToDb, removeFromDb as deleteFromDb, clearTheCart, getStoredCart }

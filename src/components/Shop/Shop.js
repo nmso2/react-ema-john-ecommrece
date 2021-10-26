@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, FormControl, InputGroup } from 'react-bootstrap';
+import { Button, FormControl, InputGroup, Pagination } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
@@ -7,32 +7,52 @@ import Product from '../Product/Product';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
+    const [page, setPage] = useState(0);
+    const [pageCount, setPageCount] = useState(0);
     const [displayProducts, setDisplayProducts] = useState([]);
+    const size = 10;
 
     useEffect(() => {
-        fetch('./products.json')
+        fetch(`http://localhost:5000/products?page=${page}&&size=${size}`)
             .then(res => res.json())
             .then(data => {
-                setProducts(data);
-                setDisplayProducts(data);
+                setProducts(data.products);
+                setDisplayProducts(data.products);
+                const count = data.count;
+                const pageNumber = Math.ceil(count / size);
+                setPageCount(pageNumber);
             });
-    }, []);
+    }, [page]);
+
 
     useEffect(() => {
-        if (products.length) {
-            const savedCart = getStoredCart();
-            const storedCart = [];
-            for (const key in savedCart) {
-                const addedProduct = products.find(product => product.key === key);
-                if (addedProduct) {
-                    const quantity = savedCart[key];
-                    addedProduct.quantity = quantity;
-                    storedCart.push(addedProduct);
+        const savedCart = getStoredCart();
+        const keys = Object.keys(savedCart);
+        console.log(keys)
+        fetch('http://localhost:5000/products/byKeys', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(keys)
+        })
+            .then(res => res.json())
+            .then(products => {
+                if (products.length) {
+                    const savedCart = getStoredCart();
+                    const storedCart = [];
+                    for (const key in savedCart) {
+                        const addedProduct = products.find(product => product.key === key);
+                        if (addedProduct) {
+                            const quantity = savedCart[key];
+                            addedProduct.quantity = quantity;
+                            storedCart.push(addedProduct);
+                        }
+                    }
+                    setCart(storedCart);
                 }
-            }
-            setCart(storedCart);
-        }
-    }, [products])
+            })
+    }, [])
 
 
     const handleAddToCart = (product) => {
@@ -66,6 +86,11 @@ const Shop = () => {
                             product={product}
                             handleAddToCart={handleAddToCart}></Product>)
                     }
+                    <Pagination className="justify-content-center">
+                        {
+                            [...Array(pageCount).keys()].map(number => <Pagination.Item key={number} onClick={() => setPage(number)}>{number + 1}</Pagination.Item>)
+                        }
+                    </Pagination>
                 </div>
                 <div className="col-lg-4 col-6 position-fixed end-0 pt-lg-4 pt-5 mt-lg-0 mt-5">
                     <div className=" mt-3">
