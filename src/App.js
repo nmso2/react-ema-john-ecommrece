@@ -12,6 +12,7 @@ import CreateAccount from './components/CreateAccount/CreateAccount';
 import AuthProvider from './context/AuthProvider';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Shipping from './components/Shipping/Shipping';
+import Orders from './components/Orders/Orders';
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
             </Route>
             <PrivateRoute path="/placeorder">
               <PlaceOrder></PlaceOrder>
+            </PrivateRoute>
+            <PrivateRoute path="/orders">
+              <Orders></Orders>
             </PrivateRoute>
             <PrivateRoute path="/shipping">
               <Shipping></Shipping>

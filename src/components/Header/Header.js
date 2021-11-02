@@ -25,6 +25,8 @@ const Header = () => {
                                 <NavDropdown.Item href="#categories/2"><Link className="dropdown-item" to="/categories/:catItem">Category 2</Link></NavDropdown.Item>
                                 <NavDropdown.Item href="#categories/3"><Link className="dropdown-item" to="/categories/:catItem">Category 3</Link></NavDropdown.Item>
                             </NavDropdown>
+
+                            <Nav.Link className="p-0" href="#orders"><Link className="text-decoration-none nav-link" to="/orders">Orders</Link></Nav.Link>
                         </Nav>
                         <Nav>
                             {user.displayName && <Nav.Link className="p-0" href="#user"><Link className="text-decoration-none nav-link" to="/">Hello, {user?.displayName}</Link ></Nav.Link> }
